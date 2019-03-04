@@ -13,7 +13,9 @@ https://1729.oreg.uk/
 - Prometheus
 - Data model
 - client_golang
-- Examples
+- Basic examples
+- More involved example
+- Instrumenting an http.Handler
 
 * Prometheus
 
@@ -32,6 +34,18 @@ https://1729.oreg.uk/
 * Prometheus Exporters
 
 .link https://prometheus.io/docs/instrumenting/exporters/
+
+A Prometheus exporter collects metrics from a system and exposes them
+in a format that Prometheus can scrape. There are too many to list
+here, but examples include:
+
+- Node exporter for Linux
+- WMI exporter for Windows
+- Blackbox exporter
+- PostgreSQL exporter
+- Redis exporter
+- Netgear router exporter
+- Kafka exporter
 
 * Data Model
 

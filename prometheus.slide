@@ -1,0 +1,40 @@
+Prometheus instrumentation for go
+Cambridge Gophers
+3 Mar 2019
+
+Ray Miller
+Principal DevOps Engineer, Metail
+ray@1729.org.uk
+https://1729.org.uk/
+@ray1729
+
+* Outline
+
+- Prometheus
+- go-swagger
+- Instrumentation
+
+* Prometheus
+
+.link https://prometheus.io/
+
+- Service discovery
+- Metrics collection
+- Time series database
+- Rules engine for derived metrics and alerts
+- Microservice architecture
+
+* Prometheus Architecture
+
+.image https://prometheus.io/assets/architecture.png 458 763
+
+* Prometheus Exporters
+
+.link https://prometheus.io/docs/instrumenting/exporters/
+
+* Prometheus Go Client
+
+.link https://github.com/prometheus/client_golang
+
+- Talking to the Prometheus HTTP API
+- Instrumenting application code

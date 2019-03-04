@@ -1,28 +1,29 @@
 Prometheus instrumentation for go
 Cambridge Gophers
-3 Mar 2019
+28 Mar 2019
 
 Ray Miller
 Principal DevOps Engineer, Metail
 ray@1729.org.uk
-https://1729.org.uk/
+https://1729.oreg.uk/
 @ray1729
 
-* Outline
+* Talk Outline
 
 - Prometheus
-- go-swagger
-- Instrumentation
+- Data model
+- client_golang
+- Examples
 
 * Prometheus
 
 .link https://prometheus.io/
 
+- Open Source monitoring tool
 - Service discovery
 - Metrics collection
 - Time series database
 - Rules engine for derived metrics and alerts
-- Microservice architecture
 
 * Prometheus Architecture
 
@@ -32,9 +33,68 @@ https://1729.org.uk/
 
 .link https://prometheus.io/docs/instrumenting/exporters/
 
+* Data Model
+
+.link https://prometheus.io/docs/concepts/data_model/
+
+Every time series is uniquely identified by its name and a set of labels
+
+    http_requests_total{method="GET",path="/"}
+
+* Metric types
+
+.link https://prometheus.io/docs/concepts/metric_types/
+
+- Counter
+- Gauge
+- Histogram
+- Summary
+
+* Exposition Format
+
+Prometheus uses a simple text-based exposition format
+
+.code prometheus.examples/exposition.txt
+
 * Prometheus Go Client
 
 .link https://github.com/prometheus/client_golang
 
 - Talking to the Prometheus HTTP API
 - Instrumenting application code
+
+* Exposing metrics from a go program
+
+.code prometheus.examples/simple/main.go /START OMIT/,/END OMIT/
+
+* Adding a custom metric
+
+.code prometheus.examples/custom/main.go /PART1 OMIT/,/PART2 OMIT/
+
+* Adding a custom metric (continued)
+
+.code prometheus.examples/custom/main.go /PART2 OMIT/,/END OMIT/
+
+* Automatic registration
+
+.code prometheus.examples/auto/main.go /START OMIT/,/END OMIT/
+
+* Counter Vec
+
+TODO
+
+: Explain `NewCounterVec`
+
+* Fuller example
+
+TODO
+
+: Example of function that might error, collect invocation count, error count, duration
+
+* HTTP Middleware
+
+TODO
+
+* Instrumenting an http.Handler
+
+TODO

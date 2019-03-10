@@ -1,0 +1,31 @@
+diff --git a/cmd/present/static/styles.css b/cmd/present/static/styles.css
+index bc525591..237c5ad2 100644
+--- a/cmd/present/static/styles.css
++++ b/cmd/present/static/styles.css
+@@ -250,6 +250,13 @@
+   }
+ }
+ 
++/* Styles for full screen mode */
++.slides.fullscreen > article.next, .slides.fullscreen > article.far-next,
++.slides.fullscreen > article.past, .slides.fullscreen > article.far-past {
++  display: none;
++}
++
++
+ /* Styles for slides */
+ 
+ .slides > article {
+diff --git a/cmd/present/templates/slides.tmpl b/cmd/present/templates/slides.tmpl
+index 03945d28..b976f079 100644
+--- a/cmd/present/templates/slides.tmpl
++++ b/cmd/present/templates/slides.tmpl
+@@ -40,7 +40,7 @@
+ 
+   <body style='display: none'>
+ 
+-    <section class='slides layout-widescreen'>
++    <section class='slides layout-widescreen fullscreen'>
+ 
+       <article>
+         <h1>{{.Title}}</h1>

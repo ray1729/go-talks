@@ -103,9 +103,9 @@ Prometheus uses a simple text-based exposition format
 
 * RED
 
-- R = request throughput (requests per second)
+- R = request rate (requests per second)
 - E = request error rate (as a throughput metric or fraction of overall throughput)
-- D = request latency (time taken for each request)
+- D = request duration (time taken for each request)
 
 * Metrics
 

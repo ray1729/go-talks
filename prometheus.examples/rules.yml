@@ -10,5 +10,5 @@ groups:
       - record: red_error_percent
         expr: 100*foo_error_total{job="example5"}/foo_total{job="example5"}
 
-      - record: red_latency_average
+      - record: red_duration_mean_seconds
         expr: foo_duration_seconds_sum{job="example5"}/foo_duration_seconds_count{job="example5"}

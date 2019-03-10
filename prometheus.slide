@@ -8,7 +8,7 @@ ray@1729.org.uk
 https://www.1729.org.uk/
 @ray1729
 
-* Talk Outline
+* Talk outline
 
 - Prometheus
 - Data model
@@ -27,11 +27,11 @@ https://www.1729.org.uk/
 - Time series database
 - Rules engine for derived metrics and alerts
 
-* Prometheus Architecture
+* Prometheus architecture
 
 .image https://prometheus.io/assets/architecture.png 458 763
 
-* Prometheus Exporters
+* Prometheus exporters
 
 .link https://prometheus.io/docs/instrumenting/exporters/
 
@@ -47,7 +47,7 @@ here, but examples include:
 - Netgear router exporter
 - Kafka exporter
 
-* Data Model
+* Data model
 
 .link https://prometheus.io/docs/concepts/data_model/
 
@@ -64,13 +64,13 @@ Every time series is uniquely identified by its name and a set of labels
 - Histogram
 - Summary
 
-* Exposition Format
+* Exposition format
 
 Prometheus uses a simple text-based exposition format
 
 .code prometheus.examples/exposition.txt
 
-* Prometheus Go Client
+* Prometheus go client
 
 .link https://github.com/prometheus/client_golang
 
@@ -111,15 +111,15 @@ Prometheus uses a simple text-based exposition format
 
 .code prometheus.examples/red/main.go /START METRICS OMIT/,/END METRICS OMIT/
 
-* Wrapper
+* Wrapper func to record metrics
 
 .code prometheus.examples/red/main.go /START WRAP OMIT/,/END WRAP OMIT/
 
-* Rules
+* Recording rules
 
-TODO: demo prometheus rules for computing request rate and error rate
+.code prometheus.examples/rules.yml
 
-* HTTP Middleware
+* HTTP middleware
 
 HTTP middleware is simply a function that takes a `http.Handler` and
 returns a new `http.Handler`, possibly with different behaviour.

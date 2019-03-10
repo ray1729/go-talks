@@ -1,0 +1,57 @@
+version: '3'
+services:
+  simple:
+    image: debian:stretch
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/simple
+  custom:
+    image: debian:stretch
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/custom
+  auto:
+    image: debian:stretch
+    ports:
+      - "8082:8082"
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/auto
+  vec:
+    image: debian:stretch
+    ports:
+      - "8083:8083"
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/vec
+  red:
+    image: debian:stretch
+    ports:
+      - "8084:8084"
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/red
+  handler:
+    image: debian:stretch
+    ports:
+      - "8085:8085"
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/handler
+  exercise:
+    image: debian:stretch
+    volumes:
+      - ./bin:/usr/local/bin
+    command: /usr/local/bin/exercise-handler --server-url http://handler:8085
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules.yml:/etc/prometheus/rules.yml
+

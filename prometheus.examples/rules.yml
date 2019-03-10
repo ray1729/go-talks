@@ -1,0 +1,11 @@
+groups:
+  - name: example
+    rules:
+      - record: red_request_rate
+        expr: rate(foo_total{job="example5"}[1m])
+      - record: red_error_rate
+        expr: rate(foo_error_total{job="example5"}[1m])
+      - record: red_error_percent
+        expr: 100*red_error_rate/red_request_rate
+      - record: red_latency_average
+        expr: foo_duration_seconds_sum{job="example5"}/foo_duration_seconds_count{job="example5"}

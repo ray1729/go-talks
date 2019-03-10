@@ -41,11 +41,11 @@ func main() {
 
 	// START HANDLERS OMIT
 	helloHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello"))
+		w.Write([]byte("Hello, world!\n"))
 	})
 
 	goodbyeHandler := http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Goodbye"))
+		w.Write([]byte("Goodbye, world!\n"))
 	})
 
 	helloChain := promhttp.InstrumentHandlerInFlight(

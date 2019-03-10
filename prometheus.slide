@@ -14,7 +14,7 @@ https://www.1729.org.uk/
 - Data model
 - client_golang
 - Basic examples
-- More involved example
+- RED
 - Instrumenting an http.Handler
 
 * Prometheus
@@ -93,22 +93,77 @@ Prometheus uses a simple text-based exposition format
 
 .code prometheus.examples/auto/main.go /START OMIT/,/END OMIT/
 
-* Counter Vec
+* Adding labels
 
-TODO
+.code prometheus.examples/vec/main.go /START OMIT/,/END OMIT/
 
-: Explain `NewCounterVec`
+* A function that might fail
 
-* Fuller example
+.code prometheus.examples/red/main.go /START FUNC OMIT/,/END FUNC OMIT/
 
-TODO
+* RED
 
-: Example of function that might error, collect invocation count, error count, duration
+- R = request throughput (requests per second)
+- E = request error rate (as a throughput metric or fraction of overall throughput)
+- D = request latency (time taken for each request)
+
+* Metrics
+
+.code prometheus.examples/red/main.go /START METRICS OMIT/,/END METRICS OMIT/
+
+* Wrapper
+
+.code prometheus.examples/red/main.go /START WRAP OMIT/,/END WRAP OMIT/
+
+* Rules
+
+TODO: demo prometheus rules for computing request rate and error rate
 
 * HTTP Middleware
 
-TODO
+HTTP middleware is simply a function that takes a `http.Handler` and
+returns a new `http.Handler`, possibly with different behaviour.
+
+    func exampleMiddleware(next http.Handler) http.Handler {
+        return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+            // Our middleware logic goes here...
+            next.ServeHTTP(w, r)
+        })
+    }
+
+It can be used, for example, to add authentication, logging, or
+*instrumentation* to a `http.Handler`.
+
+* promhttp
+
+.link https://godoc.org/github.com/prometheus/client_golang/prometheus/promhttp
+
+The `promhttp` package includes middleware for instrumenting HTTP
+handlers:
+
+- InstrumentHandlerCounter
+- InstrumentHandlerDuration
+- InstrumentHandlerInFlight
+- InstrumentHandlerRequestSize
+- InstrumentHandlerResponseSize
+- InstrumentHandlerTimeToWriteHeader
 
 * Instrumenting an http.Handler
 
-TODO
+.code prometheus.examples/handler/main.go /START METRICS OMIT/,/END METRICS OMIT/
+
+* Instrumenting an http.Handler (continued)
+
+.code prometheus.examples/handler/main.go /START HANDLERS OMIT/,/END HANDLERS OMIT/
+
+* go-swagger
+
+.link https://github.com/go-swagger/go-swagger
+
+The generated server has an extension point for adding middleware:
+
+.code prometheus.examples/swagger/restapi/configure_greeting_server.go /START OMIT/,/END OMIT/
+
+There has been some discussion about how to add a metrics endpoint:
+
+.link https://github.com/go-swagger/go-swagger/issues/1120

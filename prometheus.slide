@@ -156,6 +156,10 @@ handlers:
 
 .code prometheus.examples/handler/main.go /START HANDLERS OMIT/,/END HANDLERS OMIT/
 
+* Instrumenting an http.Handler (continued)
+
+.code prometheus.examples/handler/main.go /START ROUTES OMIT/,/END ROUTES OMIT/
+
 * go-swagger
 
 .link https://github.com/go-swagger/go-swagger

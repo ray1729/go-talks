@@ -165,6 +165,23 @@ handlers:
 - InstrumentHandlerResponseSize
 - InstrumentHandlerTimeToWriteHeader
 
+* InstrumentHandlerInFlight
+
+    // InstrumentHandlerInFlight is a middleware that wraps the provided
+    // http.Handler. It sets the provided prometheus.Gauge to the number of
+    // requests currently handled by the wrapped http.Handler.
+    //
+    // See the example for InstrumentHandlerDuration for example usage.
+    func InstrumentHandlerInFlight(g prometheus.Gauge, next http.Handler) http.Handler {
+      return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        g.Inc()
+        defer g.Dec()
+        next.ServeHTTP(w, r)
+      })
+    }
+
+.link https://github.com/prometheus/client_golang/blob/master/prometheus/promhttp/instrument_server.go#L31 source
+
 * Instrumenting an http.Handler
 
 .code prometheus.examples/handler/main.go /START METRICS OMIT/,/END METRICS OMIT/

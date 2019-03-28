@@ -10,12 +10,29 @@ https://www.1729.org.uk/
 
 * Talk outline
 
+- Motivation
 - Prometheus
 - Data model
 - client_golang
 - Basic examples
 - RED
 - Instrumenting an http.Handler
+
+* Motivation
+
+- Analyzing long-term trends
+- Comparing groups or over time
+- Alerting
+- Dashboards
+- Debugging
+- Predicting future needs
+
+* The four golden signals
+
+- Latency: the time it takes to serve a requet
+- Traffic: how much demand is being placed on the system
+- Errors: the rate at which requests fail
+- Saturation: how "full" the service is
 
 * Prometheus
 
